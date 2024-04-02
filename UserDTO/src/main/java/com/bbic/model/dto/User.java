@@ -9,19 +9,16 @@ public class User {
 //            - 구매가격
 //            - 수량
     private String name; //이름
-    private double withholding; //예수금
+    private double deposit; //예수금
     //private  stock  -> arraylist로 받기; //경호님거인가?
-    private double amount; //수량
     private double price; //구매 가격
-
 
     public User() {
     }
 
-    public User(String name, double withholding, double amount, double price) {
+    public User(String name, double deposit, double price) {
         this.name = name;
-        this.withholding = withholding;
-        this.amount = amount;
+        this.deposit = deposit;
         this.price = price;
     }
 
@@ -33,20 +30,12 @@ public class User {
         this.name = name;
     }
 
-    public double getWithholding() {
-        return withholding;
+    public double getDeposit() {
+        return deposit;
     }
 
-    public void setWithholding(double withholding) {
-        this.withholding = withholding;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
     }
 
     public double getPrice() {
@@ -56,4 +45,5 @@ public class User {
     public void setPrice(double price) {
         this.price = price;
     }
+    
 }
