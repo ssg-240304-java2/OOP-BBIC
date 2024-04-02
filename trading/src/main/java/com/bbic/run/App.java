@@ -1,6 +1,5 @@
 package com.bbic.run;
 
-import com.bbic.model.dto.User;
 import com.bbic.view.MainMenu;
 
 import java.util.Scanner;
@@ -18,8 +17,8 @@ public class App {
         System.out.print("예수금 : ");
         int deposit = sc.nextInt();
 
-        MainMenu mainMenu = new MainMenu(new User(name, deposit));
+        MainMenu mainMenu = new MainMenu(new User(name, deposit));  // 메인 메뉴 기능을 수행할 user값 저장
 
-        mainMenu.mainMenu();
+        mainMenu.mainMenu();                                        // 메인 메뉴 수행 기능 호출
     }
 }
