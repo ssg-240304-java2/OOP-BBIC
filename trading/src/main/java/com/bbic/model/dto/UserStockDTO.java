@@ -1,9 +1,9 @@
-package com.bbic.UserStockDTO;
+package com.bbic.model.dto;
 
 public class UserStockDTO {
     //int주식코드, 구매수량(보유 수량), 평균단가 ,int userid
     int StockCode; //주식코드
-    int count; //구매수량
+    int count; //수량
     int AveragePrice; //평균단가
     int UserId; //사용자 id
 

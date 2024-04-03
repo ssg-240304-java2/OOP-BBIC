@@ -1,5 +1,6 @@
 package com.bbic.model.dto;
 
+
 public class User {
     //   1. 멤버
 //    1. 멤버 데이터
@@ -8,18 +9,18 @@ public class User {
 //        - 주식(List)
 //            - 구매가격
 //            - 수량
+
     private String name; //이름
-    private double deposit; //예수금
-    //private  stock  -> arraylist로 받기; //경호님거인가?
     private int  UserId ; //구매 가격
+    private int deposit; //예수금
 
     public User() {
     }
 
-    public User(String name, double deposit, double price) {
+    public User(String name, int userId, int deposit) {
         this.name = name;
+        UserId = userId;
         this.deposit = deposit;
-        this.price = price;
     }
 
     public String getName() {
@@ -30,20 +31,19 @@ public class User {
         this.name = name;
     }
 
-    public double getDeposit() {
+    public int getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(int userId) {
+        UserId = userId;
+    }
+
+    public int getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(double deposit) {
+    public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    
 }
