@@ -11,7 +11,7 @@ public class User {
     private String name; //이름
     private double deposit; //예수금
     //private  stock  -> arraylist로 받기; //경호님거인가?
-    private double price; //구매 가격
+    private double  UserId ; //구매 가격
 
     public User() {
     }
