@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Sell {
+public class Sell { 
 
     StockDTO stockDTO = null;
     UserDTO user = null;
