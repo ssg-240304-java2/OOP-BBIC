@@ -1,16 +1,21 @@
 package com.bbic.view;
 
+import com.bbic.controller.StockManager;
+
 import java.util.Scanner;
+
+import static com.bbic.run.App.stocks;
 
 public class MainMenu {
 
-    private User user;
+//    private User user;
 
     MenuView mv = new MenuView();
+    StockManager sm = new StockManager();
 
-    public MainMenu(User user) {    // 메인 메뉴 생성 시 해당 메뉴를 사용할 user 정보를 전달받아 저장
-        this.user = user;
-    }
+//    public MainMenu(User user) {    // 메인 메뉴 생성 시 해당 메뉴를 사용할 user 정보를 전달받아 저장
+//        this.user = user;
+//    }
 
     public void mainMenu() {
         int selection;
@@ -19,7 +24,7 @@ public class MainMenu {
 
             switch (selection) {
                 case 1: // 주가 정보 조회 기능 호출
-//                    StockManager.showStockPrice();
+                    sm.printAllStocks(stocks);
                     System.out.println("주가 확인");
                     break;
                 case 2: // 매수 / 매도 기능 호출
