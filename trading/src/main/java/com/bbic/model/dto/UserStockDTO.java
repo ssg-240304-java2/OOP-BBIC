@@ -1,5 +1,7 @@
 package com.bbic.model.dto;
 
+import com.bbic.controller.StockManager;
+
 public class UserStockDTO {
     //int주식코드, 구매수량(보유 수량), 평균단가 ,int userid
     int StockCode; //주식코드
@@ -17,6 +19,14 @@ public class UserStockDTO {
         UserId = userId;
     }
 
+    public StockDTO getStockData() {
+        for (StockDTO stock : StockManager.stocks) {
+            if (this.StockCode == stock.getStockCode()) {
+                return stock;
+            }
+        }
+        return null;
+    }
 
     public int getStockCode() {
         return StockCode;
