@@ -13,7 +13,7 @@ public class BuyStock {
 //    StockManager sm = new StockManager();
     StockDTO selectStockDTO = new StockDTO();
     UserStockDTO userStockDTO = new UserStockDTO(); // TODO** 유저 스톡리스트 없음
-    User user = new User();
+//    User user = new User();
     int selectStockCode = 0;
     int userStockAmount = 0;
     int availableStockAmount = 0;
@@ -25,7 +25,7 @@ public class BuyStock {
      * 매수 메인 메소드
      */
     public void buyApp(User user) {
-        this.user = user;
+//        this.user = user;
         while (true) {
 
 //            sm.printAllStocks();        // 종목 전체 출력
@@ -33,7 +33,7 @@ public class BuyStock {
             System.out.println("매수할 종목의 코드번호를 입력하세요 : ");
             selectStockCode = sc.nextInt(); // 선택 종목 코드 저장
             if (selectStockCode <= StockManager.stocks.size() && selectStockCode > 0) {
-                buyStock(selectStockCode);  // (1) 구매가능정보 출력 메소드 -> (2) 구매확정 메소드로 이동
+                buyStock(selectStockCode, user);  // (1) 구매가능정보 출력 메소드 -> (2) 구매확정 메소드로 이동
                 break;
             }   else if ( selectStockCode == 0) { backToMainMenu(); break;}
             else { System.out.println("잘못된 값을 입력하였습니다. 다시 입력해주세요."); }
@@ -44,11 +44,16 @@ public class BuyStock {
     /**
      * 1. 구매 가능한 정보를 알려주는 메소드
      */
-    public void buyStock(int selectStockCode) {
+    public void buyStock(int selectStockCode, User user) {
         // 선택 종목의 매수 정보 출력
-        int index = (selectStockCode - 1);
+        int index = 0;
+
+        for(int i = 0; i < StockManager.stocks.size(); i++){
+            StockManager.stocks.get(i).getStockCode() == selectStockCode ? index = i : index = -1;
+        }
         selectStockDTO = StockManager.stocks.get(index);        // 선택한 종목의 정보를 코드(인덱스)를 통해 찾아옴
         availableStockAmount = (user.getDeposit() / selectStockDTO.getPrice()); // 구매가능한 수량 계산
+
 
 
         System.out.println("=============선택 주식 매수 정보=============");
@@ -66,7 +71,7 @@ public class BuyStock {
                 backToMainMenu();
                 break;
             } else if (buyAmount <= availableStockAmount) {    // 거래 가능 조건일 경우
-                confirmBuyStock(buyAmount);  // 거래 확정 표시
+                confirmBuyStock(buyAmount, user);  // 거래 확정 표시
                 break;
             } else {
                 System.out.println("잘못된 값을 입력하였습니다. 다시 입력해주세요.");
@@ -77,7 +82,7 @@ public class BuyStock {
     /**
      * 2. 구매 확정을 요청하는 메소드
      */
-    private void confirmBuyStock(int buyAmount) {
+    private void confirmBuyStock(int buyAmount, User user) {
         int userNewDeposit = (user.getDeposit() - selectStockDTO.getPrice() * buyAmount); // 구매 금액
         int userNewStockCount = (userStockDTO.getCount() + buyAmount);      // TODO** 유저 스톡리스트 없음
         System.out.println("매수 종목 : " + selectStockDTO.getStockName());
@@ -97,8 +102,10 @@ public class BuyStock {
         }
 
         /* 확정 정보 전달하는  setter() */
-        userStockDTO.setCount(userNewStockCount);       // TODO** 유저 스톡리스트 없음
+
+//        userStockDTO.setCount(userNewStockCount);       // TODO** 유저 스톡리스트 없음
         user.setDeposit(userNewDeposit);
+        userStocks.add(new UserStockDTO(selectStockDTO.getStockName(), userNewStockCount,selectStockDTO.getPrice());
 
 
         System.out.println("매수가 완료되었습니다. 감사합니다.");
