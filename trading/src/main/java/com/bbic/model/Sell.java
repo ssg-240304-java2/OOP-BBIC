@@ -1,41 +1,46 @@
 package com.bbic.model;
 
-import com.bbic.model.dto.StockDTO;
+import com.bbic.model.dto.User;
+import com.bbic.model.dto.UserStockDTO;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
-public class Sell { 
+public class Sell {
 
-    StockDTO stockDTO = null;
-    UserDTO user = null;
-//    UserStockDTO userStock = null;
-    Scanner sc = new Scanner(System.in);
+    User user;
+    UserStockDTO stock;
+
+    public Sell(User user) {
+        this.user = user;
+    }
 
     //1. 전체 종목(?) 보유 종목(?) 출력 메소드 호출 후, 사용자에게 입력받고 주식 코드를 저장
 
-    public void selectStock() {
-        System.out.println("매도할 주식 번호를 입력하세요 : ");
-        int userSelectNum  = sc.nextInt();
+    public void SellStock() {  // 주식 매도 시작 메소드
+        // 매도 가능한 주식을 표시
+        System.out.println("보유 주식");
+        user.showHoldingStocks();
 
-        //전체 or 보유 종목에 따라 조건문이 다르다.
-        selectStockInfo(stockCode);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("매도할 주식 번호를 입력하세요 : ");
+        if (holdingStock(sc.nextInt()) != null) {
+            stockSellingAmount(sc.nextInt());
+        } else {
+            System.out.println("보유하지 않거나 존재하지 않은 종목입니다.");
+        }
     }
 
-    //2. 선택 종목 정보 메소드 ( )
-    public void selectStockInfo(int userStock) {
+    public UserStockDTO holdingStock(int selection) {  // 입력한 코드를 가진 주식을 보유하고 있는지 확인
+        for (UserStockDTO stock : user.stocks) {
+            if (stock.getStockCode() == selection) {    // 만일 보유하고 있다면 해당 주식 정보와 보유량 출력
+                return stock;
+            }
+        }
+        return null;
+    }
 
-        System.out.println("=============선택 주식 종목 정보=============");
-        //종목명(stock.getname)
-        System.out.println(stockDTO.getStockName());
-        //주가(stock.~)
-        System.out.println(stockDTO.getPrice());
-        //전일대비
-        Double variance = (double) ((stockDTO.getPrice() - stockDTO.getPrevPrice())/stockDTO.getPrevPrice());
-        System.out.println(variance + "%");
+    //2. 선택 종목 정보를 보여주는 메소드 ( )
+    public void stockSellingAmount(int amount) {
         //현재 보유 수량(stock.get~)
         //거래 가능 수량(=현재 보유량)
         //현재 잔여 예수금
@@ -45,7 +50,6 @@ public class Sell {
 
         //거래 완료 메소드 호출()
         infoStock();
-
     }
 
     //매도 재확인 메세지 메소드( )
@@ -95,7 +99,7 @@ public class Sell {
 
         System.out.println("=============매도 종목 정보 확인=============");
         //종목명(stock.getname)
-        System.out.println("종목명 : " );
+        System.out.println("종목명 : ");
         //주가(stock.~)
 
         //현재 보유 수량(stock.get~)
@@ -104,14 +108,10 @@ public class Sell {
 
         //현재 잔여 예수금
 
-        //날짜 및 시각 정보
-        LocalDateTime Today = LocalDateTime.now();
-
 
         //AllStockInfo()
 
     }
-
 
 
 }
