@@ -102,10 +102,10 @@ public class BuyStock {
         }
 
         /* 확정 정보 전달하는  setter() */
-
 //        userStockDTO.setCount(userNewStockCount);       // TODO** 유저 스톡리스트 없음
+
         user.setDeposit(userNewDeposit);
-        userStocks.add(new UserStockDTO(selectStockDTO.getStockName(), userNewStockCount,selectStockDTO.getPrice());
+        user.userStocks.add(new UserStockDTO(selectStockDTO.getStockCode(), userNewStockCount,selectStockDTO.getPrice()));
 
 
         System.out.println("매수가 완료되었습니다. 감사합니다.");

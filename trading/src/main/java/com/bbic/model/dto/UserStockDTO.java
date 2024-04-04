@@ -19,6 +19,12 @@ public class UserStockDTO {
         UserId = userId;
     }
 
+    public UserStockDTO(int stockCode, int count, int averagePrice) {
+        StockCode = stockCode;
+        this.count = count;
+        AveragePrice = averagePrice;
+    }
+
     public StockDTO getStockData() {
         for (StockDTO stock : StockManager.stocks) {
             if (this.StockCode == stock.getStockCode()) {
