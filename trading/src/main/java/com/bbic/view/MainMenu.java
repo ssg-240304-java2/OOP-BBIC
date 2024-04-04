@@ -36,7 +36,7 @@ public class MainMenu {
                     sm.selectTradingOption(user);
                     break;
                 case 3: // 사용자 정보 조회 기능 호출
-//                    user.showData();
+                    user.showData();
                     System.out.println("사용자 정보 조회");
                     break;
                 case 4: // 계좌 입출금 기능 호출
@@ -47,7 +47,7 @@ public class MainMenu {
                     System.out.println("2. 출금");
                     System.out.print("선택 : ");
                     select = sc.nextInt();
-                    if(select == 1)
+                    if (select == 1)
                         cd.CashIn(user);
                     else if (select == 2) {
                         User isNull = cd.CashOut(user);
