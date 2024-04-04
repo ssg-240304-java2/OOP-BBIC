@@ -33,8 +33,7 @@ public class MainMenu {
                     System.out.println("주가 확인");
                     break;
                 case 2: // 매수 / 매도 기능 호출
-                    sm.selectTradingOption(/*user*/);
-                    System.out.println("매수 매도");
+                    sm.selectTradingOption(user);
                     break;
                 case 3: // 사용자 정보 조회 기능 호출
 //                    user.showData();

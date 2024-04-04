@@ -4,16 +4,13 @@ import com.bbic.controller.StockManager;
 import com.bbic.model.dto.StockDTO;
 import com.bbic.model.dto.User;
 import com.bbic.model.dto.UserStockDTO;
-import com.bbic.view.MainMenu;
-
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class BuyStock {
     Scanner sc = new Scanner(System.in);
-    MainMenu mainMenu = new MainMenu();
-    StockManager sm = new StockManager();
+//    StockManager sm = new StockManager();
     StockDTO selectStockDTO = new StockDTO();
     UserStockDTO userStockDTO = new UserStockDTO(); // TODO** 유저 스톡리스트 없음
     User user = new User();
@@ -27,19 +24,19 @@ public class BuyStock {
     /**
      * 매수 메인 메소드
      */
-    public void buyApp() {
-
+    public void buyApp(User user) {
+        this.user = user;
         while (true) {
 
-            sm.printAllStocks();        // 종목 전체 출력
+//            sm.printAllStocks();        // 종목 전체 출력
             System.out.println("0. 거래 취소하기");
             System.out.println("매수할 종목의 코드번호를 입력하세요 : ");
             selectStockCode = sc.nextInt(); // 선택 종목 코드 저장
-            if (selectStockCode < StockManager.stocks.size() && selectStockCode > 0) {
+            if (selectStockCode <= StockManager.stocks.size() && selectStockCode > 0) {
                 buyStock(selectStockCode);  // (1) 구매가능정보 출력 메소드 -> (2) 구매확정 메소드로 이동
                 break;
-            }   else if ( selectStockCode == 0) { backToMainMenu(); }
-            else { System.out.println("잘못된 값을 입력하였습니다."); }
+            }   else if ( selectStockCode == 0) { backToMainMenu(); break;}
+            else { System.out.println("잘못된 값을 입력하였습니다. 다시 입력해주세요."); }
         }
     }
 
@@ -59,19 +56,20 @@ public class BuyStock {
         System.out.println("종목 보유 수량 : " + userStockAmount);
         System.out.println("구매 가능 수량 : " + availableStockAmount);
         System.out.println("현재 잔여 예수금 : " + user.getDeposit());
+        System.out.print("매수할 수량을 작성해주세요.(취소 : 0) : ");
 
 
         while (true) { // 매수 거래 반복 거래 완료시 탈출
             buyAmount = sc.nextInt();
 
-            if (buyAmount <= availableStockAmount) {    // 거래 가능 조건일 경우
-                confirmBuyStock(buyAmount);  // 거래 확정 표시
-                break;
-            } else if (buyAmount == 0) {
+            if (buyAmount == 0) {
                 backToMainMenu();
                 break;
+            } else if (buyAmount <= availableStockAmount) {    // 거래 가능 조건일 경우
+                confirmBuyStock(buyAmount);  // 거래 확정 표시
+                break;
             } else {
-                System.out.println("잘못된 값을 입력하였습니다.");
+                System.out.println("잘못된 값을 입력하였습니다. 다시 입력해주세요.");
             }
         }
     }
@@ -91,7 +89,7 @@ public class BuyStock {
 
         String select = sc.next().toUpperCase();
         while (true) {
-            if (select.equals('Y') || select.equals('N')) {
+            if (select.equals("Y") || select.equals("N")) {
                 break;
             } else {
                 System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요. ");
@@ -104,6 +102,7 @@ public class BuyStock {
 
 
         System.out.println("매수가 완료되었습니다. 감사합니다.");
+        System.out.println("=========================================");
         backToMainMenu();
 
 
@@ -114,7 +113,7 @@ public class BuyStock {
      */
     private void backToMainMenu() {
         System.out.println("거래를 종료하고 메인메뉴로 돌아갑니다.");
-        mainMenu.mainMenu();
+        System.out.println("=========================================");
     }
 
 

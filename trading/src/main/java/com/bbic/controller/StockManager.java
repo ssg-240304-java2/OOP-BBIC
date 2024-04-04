@@ -1,6 +1,8 @@
 package com.bbic.controller;
 
+import com.bbic.model.BuyStock;
 import com.bbic.model.dto.StockDTO;
+import com.bbic.model.dto.User;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -52,7 +54,7 @@ public class StockManager {
     }
 
     // 매수 / 매도 기능 결정
-    public void selectTradingOption(/*User user*/) {
+    public void selectTradingOption(User user) {
         Scanner sc = new Scanner(System.in);
         System.out.println("""
                 원하시는 거래를 선택하세요. 매수(1) / 매도(2)
@@ -61,9 +63,13 @@ public class StockManager {
         switch (selection) {
             case 1:
                 // 매수 method 호출 <- User, Stocklist
+                printAllStocks();
+                BuyStock buyStock = new BuyStock();
+                buyStock.buyApp(user);
                 break;
             case 2:
                 // 매도 method 호출 <- User, Stocklist
+
                 break;
             default:
                 System.out.println("잘못된 값을 입력하였습니다. 메인 메뉴로 돌아갑니다.");
