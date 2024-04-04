@@ -68,4 +68,11 @@ public class User {
     public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
+
+    @Override
+    public String toString() {
+        return "이름= '" + name + '\'' +
+                ", 보유 금액=" + deposit;
+    }
+
 }
