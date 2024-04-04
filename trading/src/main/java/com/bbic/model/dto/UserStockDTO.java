@@ -59,4 +59,11 @@ public class UserStockDTO {
     public void setUserId(int userId) {
         UserId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "StockCode=" + StockCode +
+                ", count=" + count +
+                ", AveragePrice=" + AveragePrice;
+    }
 }
