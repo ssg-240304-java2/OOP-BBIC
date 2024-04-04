@@ -53,16 +53,16 @@ public class SellStock {
     }
 
     //매도 재확인 메세지 메소드( )
-    public void selectCheckmsg(int quantity) {
-        System.out.println("매도 수량은 " + quantity + "이며" + "금액은 " + quantity * stockDTO.getPrice() + " 입니다. \n 매도하시겠습니까? (Y/N) ");
-
-        String select = sc.next().toUpperCase(Locale.ROOT);
+    public void sellCheck(int count) {
+        Scanner sc = new Scanner(System.in);
         while (true) {
-            if (select.equals('Y') || select.equals('N')) {
-                quantityCheck(quantity); 
-                break;
+            System.out.print("매도 수량은 " + count + "이며 총 매도 금액은 " + count * stock.getStockData().getPrice() + " 입니다. \n 매도하시겠습니까? (Y/N) : ");
+            String select = sc.next().toUpperCase();
+            if (select.equals("Y") || select.equals("N")) {
+                decreaseHoldingStock(count);
+                return;
             } else {
-                System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요. ");
+                System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요.");
             }
         }
     }
