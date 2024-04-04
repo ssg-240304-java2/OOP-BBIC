@@ -12,9 +12,6 @@ public class SellStock {
 
     public SellStock(User user) {
         this.user = user;
-        /*임시 주식 data*/
-        this.user.userStocks.add(new UserStockDTO(1, 10, 83000, 1234));
-        this.user.userStocks.add(new UserStockDTO(2, 10, 183000, 1234));
     }
 
     //1. 전체 종목(?) 보유 종목(?) 출력 메소드 호출 후, 사용자에게 입력받고 주식 코드를 저장
@@ -22,7 +19,7 @@ public class SellStock {
     public void SellStock() {  // 주식 매도 시작 메소드
         // 매도 가능한 주식을 표시
         System.out.println("보유 주식");
-        System.out.println(user.showHoldingStocks());
+        user.showHoldingStocks();
 
         Scanner sc = new Scanner(System.in);
         System.out.println("매도할 주식 번호를 입력하세요 : ");
