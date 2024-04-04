@@ -59,7 +59,7 @@ public class SellStock {
         String select = sc.next().toUpperCase(Locale.ROOT);
         while (true) {
             if (select.equals('Y') || select.equals('N')) {
-                quantityCheck(quantity);
+                quantityCheck(quantity); 
                 break;
             } else {
                 System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요. ");
@@ -68,30 +68,23 @@ public class SellStock {
     }
 
     //매도 수량 비교 메소드 ( )
-    public boolean quantityCheck(int quantity) {
+    public boolean amountCheck(int amount) {
 
         boolean check = false;
 
-       /* if(get~ >= select) {
+        if(stock.getCount() >= amount) {
             check = true;
-            UserChange();
-            System.out.println("거래에 성공하셨습니다. ")
-
+            sellCheck(amount);
 
             return check;
-        } else {
-            System.out.println("보유 주식 종목이 매도하려는 수량보다 적습니다. 거래에 실패하였습니다. ")
-            main();
         }
-        */
-
+           return check;
     }
 
-    //사용자 보유종목 수정 메소드 ()
-    public void UserChange() {
-//        현재 보유 수량 -= quantity; //set
-//        현재 예수금 += StockDTO.price * quantity;  //set
-
+    //사용자 매도 수량, 보유 수량 수정 메소드 ( )
+    public void decreaseHoldingStock(int count) {
+        stock.setCount(stock.getCount() - count);
+        user.setDeposit(user.getDeposit() + (stock.getStockData().getPrice() * count));
     }
 
     //매도 종목 정보 메소드 ( )
