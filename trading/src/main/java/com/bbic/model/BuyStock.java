@@ -28,7 +28,7 @@ public class BuyStock {
     public void buyApp(User user) {
         while (true) {
             System.out.println("0. 거래 취소하기");
-            System.out.println("매수할 종목의 코드번호를 입력하세요 : ");
+            System.out.print("매수할 종목의 코드번호를 입력하세요 : ");
             selectStockCode = sc.nextInt(); // 선택 종목 코드 저장
             if (selectStockCode <= StockManager.stocks.size() && selectStockCode > 0) {
                 buyStock(selectStockCode, user);  // (1) 구매가능정보 출력 메소드 -> (2) 구매확정 메소드로 이동
@@ -70,10 +70,10 @@ public class BuyStock {
         while (true) { // 매수 거래 반복 거래 완료시 탈출
             buyAmount = sc.nextInt();
 
-            if (buyAmount == 0) {
+            if (buyAmount == 0 ) {
                 backToMainMenu();
                 break;
-            } else if (buyAmount <= availableStockAmount) {    // 거래 가능 조건일 경우
+            } else if (buyAmount <= availableStockAmount && buyAmount > 0) {    // 거래 가능 조건일 경우
                 confirmBuyStock(buyAmount, user);  // 거래 확정 표시
                 break;
             } else {
@@ -90,7 +90,7 @@ public class BuyStock {
         int userNewStockCount = 0;
 
         int index = -1;
-        for(int i = 0; i < StockManager.stocks.size(); i++){        // 동일한 주식을 보유중인지 확인
+        for(int i = 0; i < user.userStocks.size(); i++){        // 동일한 주식을 보유중인지 확인
             if(user.userStocks.get(i).getStockCode() == selectStockCode){
                 index = i;
             }

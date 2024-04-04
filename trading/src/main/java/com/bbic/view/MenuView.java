@@ -14,7 +14,7 @@ public class MenuView {
     }
 
     public void askSelection() {
-        System.out.println("""
+        System.out.print("""
                 선택하실 메뉴 번호를 입력하세요.
                 ========================
                 메뉴 번호 :\s""");

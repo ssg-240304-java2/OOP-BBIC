@@ -30,14 +30,14 @@ public class MainMenu {
             switch (selection) {
                 case 1: // 주가 정보 조회 기능 호출
                     sm.printAllStocks();
-                    System.out.println("주가 확인");
+//                    System.out.println("주가 확인");
                     break;
                 case 2: // 매수 / 매도 기능 호출
                     sm.selectTradingOption(user);
                     break;
                 case 3: // 사용자 정보 조회 기능 호출
                     user.showData();
-                    System.out.println("사용자 정보 조회");
+//                    System.out.println("사용자 정보 조회");
                     break;
                 case 4: // 계좌 입출금 기능 호출
                     int select = 0;
