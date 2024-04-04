@@ -59,7 +59,7 @@ public class SellStock {
         String select = sc.next().toUpperCase(Locale.ROOT);
         while (true) {
             if (select.equals('Y') || select.equals('N')) {
-                quantityCheck(quantity);
+                quantityCheck(quantity); 
                 break;
             } else {
                 System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요. ");
