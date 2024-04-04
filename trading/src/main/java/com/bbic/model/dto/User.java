@@ -30,6 +30,7 @@ public class User {
 
     public String showHoldingStocks() {
         String holdingStockList = "";
+
         if (userStocks.size() == 0) {
             System.out.println("보유한 주식이 없습니다.");
             return "";
@@ -45,9 +46,9 @@ public class User {
     public String holdingStockInformation(UserStockDTO stock) {
         String info = "";
 
-        info += "종목 : %-8s".formatted(stock.getStockData().getStockName()); // 이름
+        info += "종목 : ["+ stock.getStockCode() +"] %-8s".formatted(stock.getStockData().getStockName()); // 이름
         info += "수량 : %-5d".formatted(stock.getCount());                    // 보유 수량
-        info += "수익 : %-9d".formatted((stock.getStockData().getPrice() - stock.AveragePrice) * stock.getCount());     // 주당 변동량
+        info += "가격 : %-9d".formatted((stock.getStockData().getPrice() ));     // 주당 변동량
 
         return info + "\n";
     }
@@ -88,7 +89,7 @@ public class User {
 
     public void showData() {
         userInformation();
-        showHoldingStocks();
+        System.out.println(showHoldingStocks());
 
     }
 
