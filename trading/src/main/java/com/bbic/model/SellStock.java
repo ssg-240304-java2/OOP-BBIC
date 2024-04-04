@@ -5,12 +5,12 @@ import com.bbic.model.dto.UserStockDTO;
 
 import java.util.Scanner;
 
-public class Sell {
+public class SellStock {
 
     User user;
     UserStockDTO stock;
 
-    public Sell(User user) {
+    public SellStock(User user) {
         this.user = user;
     }
 
