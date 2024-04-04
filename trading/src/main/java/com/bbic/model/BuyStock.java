@@ -49,7 +49,7 @@ public class BuyStock {
         int index = 0;
 
         for(int i = 0; i < StockManager.stocks.size(); i++){
-            StockManager.stocks.get(i).getStockCode() == selectStockCode ? index = i : index = -1;
+            index = StockManager.stocks.get(i).getStockCode() == selectStockCode ? i : -1;
         }
         selectStockDTO = StockManager.stocks.get(index);        // 선택한 종목의 정보를 코드(인덱스)를 통해 찾아옴
         availableStockAmount = (user.getDeposit() / selectStockDTO.getPrice()); // 구매가능한 수량 계산
