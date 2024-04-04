@@ -13,7 +13,7 @@ public class User {
 //            - 수량
 
     //    private ArrayList<UserStockDTO> stocks = null;
-    public ArrayList<UserStockDTO> stocks = new ArrayList<>();
+    public ArrayList<UserStockDTO> userStocks = new ArrayList<>();
     private String name; //이름
     private int UserId; //구매 가격
     private int deposit; //예수금
@@ -29,7 +29,7 @@ public class User {
 
     public String showHoldingStocks() {
         String holdingStockList = "";
-        for (UserStockDTO stock : stocks) {
+        for (UserStockDTO stock : userStocks) {
             holdingStockList += holdingStockInformation(stock);
         }
         return holdingStockList;

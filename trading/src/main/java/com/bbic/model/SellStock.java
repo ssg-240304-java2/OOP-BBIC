@@ -31,7 +31,7 @@ public class SellStock {
     }
 
     public UserStockDTO holdingStock(int selection) {  // 입력한 코드를 가진 주식을 보유하고 있는지 확인
-        for (UserStockDTO stock : user.stocks) {
+        for (UserStockDTO stock : user.userStocks) {
             if (stock.getStockCode() == selection) {    // 만일 보유하고 있다면 해당 주식 정보와 보유량 출력
                 return stock;
             }
