@@ -23,16 +23,17 @@ public class SellStock {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("매도할 주식 번호를 입력하세요 : ");
-        if (holdingStock(sc.nextInt()) != null) {
-            stockSellingAmount(sc.nextInt());
+        this.stock = selectedStock(sc.nextInt());
+        if (this.stock != null) {
+            int temp = insertSellingAmount();   // 매도 수량 입력
         } else {
             System.out.println("보유하지 않거나 존재하지 않은 종목입니다.");
         }
     }
 
-    public UserStockDTO holdingStock(int selection) {  // 입력한 코드를 가진 주식을 보유하고 있는지 확인
+    public UserStockDTO selectedStock(int selection) {  // 입력한 코드를 가진 주식을 보유하고 있는지 확인
         for (UserStockDTO stock : user.stocks) {
-            if (stock.getStockCode() == selection) {    // 만일 보유하고 있다면 해당 주식 정보와 보유량 출력
+            if (stock.getStockCode() == selection) {    // 만일 보유하고 있다면 해당 주식 정보를 리턴
                 return stock;
             }
         }
@@ -40,16 +41,21 @@ public class SellStock {
     }
 
     //2. 선택 종목 정보를 보여주는 메소드 ( )
-    public void stockSellingAmount(int amount) {
-        //현재 보유 수량(stock.get~)
-        //거래 가능 수량(=현재 보유량)
-        //현재 잔여 예수금
-        //매도 수량 입력
-        int quantity = sc.nextInt();
-        selectCheckmsg(quantity);
-
-        //거래 완료 메소드 호출()
-        infoStock();
+    public int insertSellingAmount() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            //현재 보유 수량(stock.get~)
+            //거래 가능 수량(=현재 보유량)
+            System.out.println("매도 수량을 입력하세요. 현재 수량 : " + this.stock.getCount());
+            System.out.print("수량 입력 : ");
+            int amount = sc.nextInt();
+            //현재 잔여 예수금
+            //매도 수량 입력
+            if (amountCheck(amount)) {
+                return amount;
+            }
+            System.out.println("값을 똑!바!로! 입력해주세요!");
+        }
     }
 
     //매도 재확인 메세지 메소드( )
@@ -68,23 +74,30 @@ public class SellStock {
     }
 
     //매도 수량 비교 메소드 ( )
-    public boolean amountCheck(int amount) {
+    public boolean quantityCheck(int quantity) {
 
         boolean check = false;
 
-        if(stock.getCount() >= amount) {
+       /* if(get~ >= select) {
             check = true;
-            sellCheck(amount);
+            UserChange();
+            System.out.println("거래에 성공하셨습니다. ")
+
 
             return check;
+        } else {
+            System.out.println("보유 주식 종목이 매도하려는 수량보다 적습니다. 거래에 실패하였습니다. ")
+            main();
         }
-           return check;
+        */
+
     }
 
-    //사용자 매도 수량, 보유 수량 수정 메소드 ( )
-    public void decreaseHoldingStock(int count) {
-        stock.setCount(stock.getCount() - count);
-        user.setDeposit(user.getDeposit() + (stock.getStockData().getPrice() * count));
+    //사용자 보유종목 수정 메소드 ()
+    public void UserChange() {
+//        현재 보유 수량 -= quantity; //set
+//        현재 예수금 += StockDTO.price * quantity;  //set
+
     }
 
     //매도 종목 정보 메소드 ( )
