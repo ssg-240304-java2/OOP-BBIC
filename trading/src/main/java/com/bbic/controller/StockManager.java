@@ -57,7 +57,7 @@ public class StockManager {
     // 매수 / 매도 기능 결정
     public void selectTradingOption(User user) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("""
+        System.out.print("""
                 원하시는 거래를 선택하세요. 매수(1) / 매도(2)
                 매수 / 매도 :\s""");
         int selection = sc.nextInt();

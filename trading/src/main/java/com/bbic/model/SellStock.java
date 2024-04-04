@@ -19,9 +19,9 @@ public class SellStock {
 
     public void SellStock() {  // 주식 매도 시작 메소드
         // 매도 가능한 주식을 표시
-        System.out.println("===========보유 주식===========");
+        System.out.println("===================보유 주식=====================");
         System.out.println(user.showHoldingStocks());
-        System.out.println("==============================");
+        System.out.println("================================================");
         Scanner sc = new Scanner(System.in);
         System.out.print("매도할 주식 번호를 입력하세요 : ");
         this.stock = selectedStock(sc.nextInt());
@@ -47,8 +47,9 @@ public class SellStock {
         while (true) {
             //현재 보유 수량(stock.get~)
             //거래 가능 수량(=현재 보유량)
-            System.out.print("매도 수량을 입력하세요. 현재 수량 : " + this.stock.getCount());
-            System.out.print("수량 입력 : ");
+            System.out.print("매도 수량을 입력하세요." );
+            System.out.println("현재 수량 : " + this.stock.getCount());
+            System.out.print("수량 입력(0이면 메인메뉴로 돌아갑니다. ) : ");
             int amount = sc.nextInt();
             //현재 잔여 예수금
             //매도 수량 입력
