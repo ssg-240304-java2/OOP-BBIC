@@ -13,8 +13,8 @@ public class SellStock {
     public SellStock(User user) {
         this.user = user;
         /*임시 주식 data*/
-        this.user.userStocks.add(new UserStockDTO(1, 10, 83000, 1234));
-        this.user.userStocks.add(new UserStockDTO(2, 10, 183000, 1234));
+//        this.user.userStocks.add(new UserStockDTO(1, 10, 83000, 1234));
+//        this.user.userStocks.add(new UserStockDTO(2, 10, 183000, 1234));
     }
 
     public void SellStock() {  // 주식 매도 시작 메소드
@@ -66,10 +66,13 @@ public class SellStock {
         while (true) {
             System.out.print("매도 수량은 " + count + "이며 총 매도 금액은 " + count * stock.getStockData().getPrice() + " 입니다. \n 매도하시겠습니까? (Y/N) : ");
             String select = sc.next().toUpperCase();
-            if (select.equals("Y") || select.equals("N")) {
+            if (select.equals("Y") ){
                 decreaseHoldingStock(count);
                 System.out.println("거래가 완료되었습니다.");
                 infoStock();
+                return;
+            }else if (select.equals("N")) {
+                System.out.println("거래를 취소하고 메인으로 돌아갑니다.");
                 return;
             } else {
                 System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요.");
@@ -82,7 +85,7 @@ public class SellStock {
 
         boolean check = false;
 
-        if (stock.getCount() >= amount) {
+        if (stock.getCount() >= amount && amount > 0) {
             check = true;
             sellCheck(amount);
 
