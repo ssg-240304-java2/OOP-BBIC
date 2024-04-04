@@ -30,6 +30,7 @@ public class User {
 
     public String showHoldingStocks() {
         String holdingStockList = "";
+        System.out.println(userStocks.size());
         if (userStocks.size() == 0) {
             System.out.println("보유한 주식이 없습니다.");
             return "";
@@ -88,7 +89,7 @@ public class User {
 
     public void showData() {
         userInformation();
-        showHoldingStocks();
+        System.out.println(showHoldingStocks());
 
     }
 
