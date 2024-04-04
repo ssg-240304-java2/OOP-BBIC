@@ -25,7 +25,7 @@ public class SellStock {
         System.out.println("매도할 주식 번호를 입력하세요 : ");
         this.stock = selectedStock(sc.nextInt());
         if (this.stock != null) {
-            int temp = insertSellingAmount();   // 매도 수량 입력
+            insertSellingAmount();   // 매도 수량 입력 후 매도 성사
         } else {
             System.out.println("보유하지 않거나 존재하지 않은 종목입니다.");
         }
@@ -41,7 +41,7 @@ public class SellStock {
     }
 
     //2. 선택 종목 정보를 보여주는 메소드 ( )
-    public int insertSellingAmount() {
+    public void insertSellingAmount() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             //현재 보유 수량(stock.get~)
@@ -52,7 +52,7 @@ public class SellStock {
             //현재 잔여 예수금
             //매도 수량 입력
             if (amountCheck(amount)) {
-                return amount;
+                return;
             }
             System.out.println("값을 똑!바!로! 입력해주세요!");
         }
