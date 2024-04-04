@@ -20,7 +20,7 @@ public class App {
         int deposit = sc.nextInt();
 
         // TODO 승인님 : 이거 추가했습니다 입맛대로 고쳐써주세요 Line:26 도 임시로 넣어놨습니다.
-        System.out.print("아이디 ; ");
+        System.out.print("아이디(숫자) : ");
         int userid = sc.nextInt();
 
         MainMenu mainMenu = new MainMenu(new User(name,userid,deposit));  // 메인 메뉴 기능을 수행할 user값 저장
