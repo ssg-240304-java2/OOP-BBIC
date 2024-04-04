@@ -39,7 +39,7 @@ public class StockManager {
             System.out.println("[" + s.getStockCode() + "]"
                     + s.getStockName()
                     + ((s.getStockName().length() < 4) ? "\t\t\t" : (s.getStockName().length() > 7) ? "\t" : "\t\t")    // 길이에따라 간격을 맞춤
-                    + formatter.format(s.getPrevPrice()) + "\t\t"
+                    + formatter.format(s.getPrice()) + "\t\t"
                     + getComparePrevPrice(s) + "%");
         }
         System.out.println("====================================");
@@ -59,7 +59,7 @@ public class StockManager {
         Scanner sc = new Scanner(System.in);
         System.out.print("""
                 원하시는 거래를 선택하세요. 매수(1) / 매도(2)
-                매수 / 매도 :\s""");
+                매수 / 매도 : """);
         int selection = sc.nextInt();
         switch (selection) {
             case 1:
