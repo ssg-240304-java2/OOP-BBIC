@@ -1,6 +1,7 @@
 package com.bbic.controller;
 
 import com.bbic.model.BuyStock;
+import com.bbic.model.SellStock;
 import com.bbic.model.dto.StockDTO;
 import com.bbic.model.dto.User;
 
@@ -68,7 +69,8 @@ public class StockManager {
                 buyStock.buyApp(user);
                 break;
             case 2:
-                // 매도 method 호출 <- User, Stocklist
+                SellStock sellStock = new SellStock(user);
+                sellStock.SellStock();
 
                 break;
             default:
