@@ -69,6 +69,7 @@ public class SellStock {
             String select = sc.next().toUpperCase();
             if (select.equals("Y") || select.equals("N")) {
                 decreaseHoldingStock(count);
+                System.out.println("거래가 완료되었습니다.");
                 return;
             } else {
                 System.out.println("잘못된 값을 입력했습니다. 다시 입력해주세요.");

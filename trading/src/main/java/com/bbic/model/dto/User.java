@@ -19,6 +19,7 @@ public class User {
     private int deposit; //예수금
 
     public User() {
+
     }
 
     public User(String name, int userId, int deposit) {
@@ -29,7 +30,13 @@ public class User {
 
     public String showHoldingStocks() {
         String holdingStockList = "";
+        if (userStocks.size() == 0) {
+            System.out.println("보유한 주식이 없습니다.");
+            return "";
+        }
+
         for (UserStockDTO stock : userStocks) {
+
             holdingStockList += holdingStockInformation(stock);
         }
         return holdingStockList;
@@ -69,10 +76,20 @@ public class User {
         this.deposit = deposit;
     }
 
-    @Override
-    public String toString() {
-        return "이름= '" + name + '\'' +
-                ", 보유 금액=" + deposit;
+
+    //이름 예수금 showholdings
+    public void userInformation() {
+
+        System.out.println("사용자 정보조회");
+        System.out.println("이름 : " + this.name);
+        System.out.println("보유 금액 :" + this.deposit);
+
+    }
+
+    public void showData() {
+        userInformation();
+        showHoldingStocks();
+
     }
 
 }
