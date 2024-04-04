@@ -13,12 +13,13 @@ public class User {
 //            - 수량
 
     //    private ArrayList<UserStockDTO> stocks = null;
-    public ArrayList<UserStockDTO> userStocks = new ArrayList<>();
+    public ArrayList<UserStockDTO> stocks = new ArrayList<>();
     private String name; //이름
     private int UserId; //구매 가격
     private int deposit; //예수금
 
     public User() {
+
     }
 
     public User(String name, int userId, int deposit) {
@@ -29,7 +30,13 @@ public class User {
 
     public String showHoldingStocks() {
         String holdingStockList = "";
-        for (UserStockDTO stock : userStocks) {
+        if(stocks.size() == 0){
+            System.out.println("보유한 주식이 없습니다.");
+            return "";
+        }
+
+        for (UserStockDTO stock : stocks) {
+
             holdingStockList += holdingStockInformation(stock);
         }
         return holdingStockList;
@@ -69,10 +76,21 @@ public class User {
         this.deposit = deposit;
     }
 
-    @Override
-    public String toString() {
-        return "이름= '" + name + '\'' +
-                ", 보유 금액=" + deposit;
+
+    //이름 예수금 showholdings
+    public void userInformation(){
+
+        System.out.println("사용자 정보조회");
+        System.out.println("이름 : " + this.name);
+        System.out.println("보유 금액 :"+ this.deposit);
+
+    }
+
+    public void showData(){
+        userInformation();
+        showHoldingStocks();
+
     }
 
 }
+
